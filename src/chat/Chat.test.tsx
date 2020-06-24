@@ -13,4 +13,16 @@ describe("Chat", () => {
 
     expect(queryByText("Hi!")).toBeVisible()
   })
+
+  test("Closes on click", async () => {
+    const { queryByText } = render(<Chat />)
+    userEvent.click(queryByText("Chat"))
+    expect(queryByText("Hi!")).toBeVisible()
+
+    userEvent.click(queryByText("Chat"))
+    // Wait for the chat to finish collapsing
+    await new Promise((res) => setTimeout(res, 500))
+
+    expect(queryByText("Hi!")).not.toBeVisible()
+  })
 })
