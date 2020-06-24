@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import { makeStyles, createStyles, Grid, Collapse } from "@material-ui/core"
+import { makeStyles, createStyles, Collapse } from "@material-ui/core"
+import ChatBody from "./ChatBody"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -18,10 +19,6 @@ const useStyles = makeStyles((theme) =>
       color: theme.palette.getContrastText(theme.palette.primary.main),
       padding: theme.spacing(1),
       textAlign: "center",
-    },
-    body: {
-      padding: theme.spacing(1),
-      minHeight: "calc(100vh - 75px)",
     },
   }),
 )
@@ -44,10 +41,7 @@ const Chat = (): JSX.Element => {
         Chat
       </div>
       <Collapse in={isOpen}>
-        <Grid container className={classes.body} direction="column">
-          <Grid item>Hello?</Grid>
-          <Grid item>Hi!</Grid>
-        </Grid>
+        <ChatBody />
       </Collapse>
     </div>
   )
