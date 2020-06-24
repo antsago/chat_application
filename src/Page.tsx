@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) =>
     content: {
       paddingTop: theme.spacing(8),
       paddingBottom: theme.spacing(8),
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
   }),
 )
@@ -20,9 +23,10 @@ const Page = (): JSX.Element => {
 
   return (
     <Container className={classes.content} maxWidth="md">
-      <Typography component="h1" variant="h3" align="center">
-        Presumably useful page
+      <Typography component="h1" variant="h3">
+        Presumably useful page.
       </Typography>
+      <Typography variant="caption">Pssst, click the chat!</Typography>
     </Container>
   )
 }
