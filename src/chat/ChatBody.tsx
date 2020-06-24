@@ -1,5 +1,5 @@
 import React from "react"
-import { makeStyles, createStyles, Grid } from "@material-ui/core"
+import { makeStyles, createStyles, Grid, Collapse } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -10,14 +10,20 @@ const useStyles = makeStyles((theme) =>
   }),
 )
 
-const ChatBody = (): JSX.Element => {
+interface Props {
+  isOpen: boolean
+}
+
+const ChatBody = ({ isOpen }: Props): JSX.Element => {
   const classes = useStyles()
 
   return (
-    <Grid container className={classes.body} direction="column">
-      <Grid item>Hello?</Grid>
-      <Grid item>Hi!</Grid>
-    </Grid>
+    <Collapse in={isOpen}>
+      <Grid container className={classes.body} direction="column">
+        <Grid item>Hello?</Grid>
+        <Grid item>Hi!</Grid>
+      </Grid>
+    </Collapse>
   )
 }
 

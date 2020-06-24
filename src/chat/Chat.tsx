@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { makeStyles, createStyles, Collapse } from "@material-ui/core"
+import { makeStyles, createStyles } from "@material-ui/core"
 import ChatBody from "./ChatBody"
 
 const useStyles = makeStyles((theme) =>
@@ -40,9 +40,7 @@ const Chat = (): JSX.Element => {
       >
         Chat
       </div>
-      <Collapse in={isOpen}>
-        <ChatBody />
-      </Collapse>
+      <ChatBody isOpen={isOpen} />
     </div>
   )
 }
