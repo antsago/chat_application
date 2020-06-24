@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { makeStyles, createStyles } from "@material-ui/core"
 import ChatBody from "./ChatBody"
+import ChatHeader from "./ChatHeader"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -14,12 +15,6 @@ const useStyles = makeStyles((theme) =>
       zIndex: theme.zIndex.speedDial,
       backgroundColor: theme.palette.grey[200],
     },
-    title: {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.getContrastText(theme.palette.primary.main),
-      padding: theme.spacing(1),
-      textAlign: "center",
-    },
   }),
 )
 
@@ -27,19 +22,9 @@ const Chat = (): JSX.Element => {
   const classes = useStyles()
   const [isOpen, setIsOpen] = useState(false)
 
-  const toggleChat = () => setIsOpen(!isOpen)
-
   return (
     <div className={classes.root}>
-      <div
-        className={classes.title}
-        onClick={toggleChat}
-        onKeyDown={toggleChat}
-        role="button"
-        tabIndex={0}
-      >
-        Chat
-      </div>
+      <ChatHeader onClick={() => setIsOpen(!isOpen)} />
       <ChatBody isOpen={isOpen} />
     </div>
   )
