@@ -1,11 +1,13 @@
 import React from "react"
 import { makeStyles, createStyles, Grid, Collapse } from "@material-ui/core"
+import messages from "./initialMessages.json"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     body: {
       padding: theme.spacing(1),
-      minHeight: "calc(100vh - 75px)",
+      height: "calc(100vh - 75px)",
+      overflow: "scroll",
     },
   }),
 )
@@ -19,9 +21,12 @@ const ChatBody = ({ isOpen }: Props): JSX.Element => {
 
   return (
     <Collapse in={isOpen}>
-      <Grid container className={classes.body} direction="column">
-        <Grid item>Hello?</Grid>
-        <Grid item>Hi!</Grid>
+      <Grid container className={classes.body}>
+        {messages.map((message) => (
+          <Grid key={message.id} item xs={12}>
+            {message.text}
+          </Grid>
+        ))}
       </Grid>
     </Collapse>
   )

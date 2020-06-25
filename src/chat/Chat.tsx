@@ -6,7 +6,7 @@ import ChatHeader from "./ChatHeader"
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
-      minWidth: "400px",
+      width: "400px",
       position: "fixed",
       right: 10,
       bottom: 10,
