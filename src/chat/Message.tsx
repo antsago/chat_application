@@ -8,6 +8,7 @@ import {
   createStyles,
 } from "@material-ui/core"
 import { Message as MessageType } from "./MessengerHook"
+import MetaInfo from "./MetaInfo"
 
 interface Props {
   message: MessageType
@@ -31,6 +32,8 @@ const useStyles = makeStyles((theme) =>
         width: "fit-content",
         maxWidth: "75%",
         marginLeft: isIn ? "unset" : "auto",
+        display: "flex",
+        flexWrap: "wrap",
       }
     },
   }),
@@ -54,6 +57,7 @@ const Message = ({ message, onRead }: Props): JSX.Element => {
       <Grid item className={classes.row}>
         <Card className={classes.message} elevation={5}>
           <Typography>{message.text}</Typography>
+          <MetaInfo message={message} />
         </Card>
       </Grid>
     </VisibilitySensor>
