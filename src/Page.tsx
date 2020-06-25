@@ -24,7 +24,7 @@ const Page = (): JSX.Element => {
 
   return (
     <Container className={classes.content} maxWidth="md">
-      <Typography component="h1" variant="h3">
+      <Typography component="h1" variant="h3" paragraph>
         Presumably useful page.
       </Typography>
       <Typography variant="caption">Pssst, click the chat!</Typography>

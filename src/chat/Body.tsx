@@ -18,9 +18,10 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       padding: theme.spacing(2),
+      paddingTop: theme.spacing(1),
     },
     messages: {
-      height: "calc(100vh - 150px)",
+      height: "calc(100vh - 175px)",
       overflow: "scroll",
     },
   }),

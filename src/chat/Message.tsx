@@ -9,21 +9,35 @@ import {
 } from "@material-ui/core"
 import { Message as MessageType } from "./MessengerHook"
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    row: {
-      width: "100%",
-    },
-  }),
-)
-
 interface Props {
   message: MessageType
   onRead: (messageId: number) => void
 }
 
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    row: {
+      width: "100%",
+    },
+    message: (message: MessageType) => {
+      const isIn = message.direction === "in"
+
+      return {
+        backgroundColor: isIn
+          ? theme.palette.primary.light
+          : theme.palette.secondary.light,
+        padding: theme.spacing(1),
+        color: theme.palette.common.white,
+        width: "fit-content",
+        maxWidth: "75%",
+        marginLeft: isIn ? "unset" : "auto",
+      }
+    },
+  }),
+)
+
 const Message = ({ message, onRead }: Props): JSX.Element => {
-  const classes = useStyles()
+  const classes = useStyles(message)
 
   return (
     <VisibilitySensor
@@ -38,7 +52,7 @@ const Message = ({ message, onRead }: Props): JSX.Element => {
       }}
     >
       <Grid item className={classes.row}>
-        <Card>
+        <Card className={classes.message} elevation={5}>
           <Typography>{message.text}</Typography>
         </Card>
       </Grid>
