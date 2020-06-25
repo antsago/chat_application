@@ -5,24 +5,24 @@ import Chat from "./Chat"
 
 describe("Chat", () => {
   test("Opens on click", () => {
-    const { queryByText } = render(<Chat />)
+    const { queryByLabelText, getByText } = render(<Chat />)
 
-    expect(queryByText("Hi!")).not.toBeVisible()
+    expect(queryByLabelText("Send the message")).not.toBeVisible()
 
-    userEvent.click(queryByText("Chat"))
+    userEvent.click(getByText("Chat"))
 
-    expect(queryByText("Hi!")).toBeVisible()
+    expect(queryByLabelText("Send the message")).toBeVisible()
   })
 
   test("Closes on click", async () => {
-    const { queryByText } = render(<Chat />)
-    userEvent.click(queryByText("Chat"))
-    expect(queryByText("Hi!")).toBeVisible()
+    const { queryByLabelText, getByText } = render(<Chat />)
+    userEvent.click(getByText("Chat"))
+    expect(queryByLabelText("Send the message")).toBeVisible()
 
-    userEvent.click(queryByText("Chat"))
+    userEvent.click(getByText("Chat"))
     // Wait for the chat to finish collapsing
     await new Promise((res) => setTimeout(res, 500))
 
-    expect(queryByText("Hi!")).not.toBeVisible()
+    expect(queryByLabelText("Send the message")).not.toBeVisible()
   })
 })
