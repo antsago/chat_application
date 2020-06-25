@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { makeStyles, createStyles } from "@material-ui/core"
 import Body from "./Body"
 import Header from "./Header"
+import useMessenger from "./MessengerHook"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -21,11 +22,12 @@ const useStyles = makeStyles((theme) =>
 const Chat = (): JSX.Element => {
   const classes = useStyles()
   const [isOpen, setIsOpen] = useState(false)
+  const [messages, sendMessage] = useMessenger()
 
   return (
     <div className={classes.root}>
       <Header onClick={() => setIsOpen(!isOpen)} />
-      <Body isOpen={isOpen} />
+      <Body isOpen={isOpen} messages={messages} sendMessage={sendMessage} />
     </div>
   )
 }
