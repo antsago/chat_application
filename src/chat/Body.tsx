@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import { makeStyles, createStyles, Grid, Collapse } from "@material-ui/core"
 import Input from "./Input"
-import initialMessages from "./initialMessages.json"
+import useMessenger from "./MessengerHook"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -19,7 +19,7 @@ interface Props {
 
 const ChatBody = ({ isOpen }: Props): JSX.Element => {
   const classes = useStyles()
-  const [messages, setMessages] = useState(initialMessages)
+  const [messages, sendMessage] = useMessenger()
 
   return (
     <Collapse in={isOpen}>
@@ -30,20 +30,7 @@ const ChatBody = ({ isOpen }: Props): JSX.Element => {
           </Grid>
         ))}
       </Grid>
-      <Input
-        sendMessage={(text) =>
-          setMessages([
-            ...messages,
-            {
-              id: 1000,
-              direction: "out",
-              status: "sent",
-              text,
-              timestamp: String(Date.now()),
-            },
-          ])
-        }
-      />
+      <Input sendMessage={sendMessage} />
     </Collapse>
   )
 }
