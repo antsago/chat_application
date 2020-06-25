@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { makeStyles, createStyles } from "@material-ui/core"
-import ChatBody from "./ChatBody"
-import ChatHeader from "./ChatHeader"
+import Body from "./Body"
+import Header from "./Header"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -24,8 +24,8 @@ const Chat = (): JSX.Element => {
 
   return (
     <div className={classes.root}>
-      <ChatHeader onClick={() => setIsOpen(!isOpen)} />
-      <ChatBody isOpen={isOpen} />
+      <Header onClick={() => setIsOpen(!isOpen)} />
+      <Body isOpen={isOpen} />
     </div>
   )
 }
