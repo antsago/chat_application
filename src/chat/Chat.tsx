@@ -23,10 +23,16 @@ const Chat = (): JSX.Element => {
   const classes = useStyles()
   const [isOpen, setIsOpen] = useState(false)
   const [messages, sendMessage] = useMessenger()
+  const unreadMessagesNo = messages.filter(
+    (m) => m.direction === "in" && m.status === "received",
+  ).length
 
   return (
     <div className={classes.root}>
-      <Header onClick={() => setIsOpen(!isOpen)} />
+      <Header
+        onClick={() => setIsOpen(!isOpen)}
+        unreadMessagesNo={unreadMessagesNo}
+      />
       <Body isOpen={isOpen} messages={messages} sendMessage={sendMessage} />
     </div>
   )

@@ -4,6 +4,12 @@ import userEvent from "@testing-library/user-event"
 import Chat from "./Chat"
 
 describe("Chat", () => {
+  test("Displays unread messages", () => {
+    const { getByText } = render(<Chat />)
+
+    expect(getByText("47")).toBeVisible()
+  })
+
   test("Opens on click", () => {
     const { queryByLabelText, getByText } = render(<Chat />)
 
