@@ -26,7 +26,7 @@ function useMessenger(): ReturnType {
     setMessages([
       ...messages,
       {
-        id: 1000,
+        id: Date.now(),
         direction: "out",
         status: "sent",
         text,
