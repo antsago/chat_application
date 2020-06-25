@@ -1,6 +1,6 @@
 import React from "react"
-import { makeStyles, createStyles, Grid, Collapse, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton } from "@material-ui/core"
-import SendIcon from "@material-ui/icons/Send"
+import { makeStyles, createStyles, Grid, Collapse } from "@material-ui/core"
+import Input from "./Input"
 import messages from "./initialMessages.json"
 
 const useStyles = makeStyles((theme) =>
@@ -29,21 +29,7 @@ const ChatBody = ({ isOpen }: Props): JSX.Element => {
           </Grid>
         ))}
       </Grid>
-      <FormControl variant="outlined">
-        <InputLabel htmlFor="new-message">Send message</InputLabel>
-        <OutlinedInput
-          id="new-message"
-          type="text"
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton aria-label="Send the message" edge="end">
-                <SendIcon />
-              </IconButton>
-            </InputAdornment>
-          }
-          label="Send message"
-        />
-      </FormControl>
+      <Input />
     </Collapse>
   )
 }
