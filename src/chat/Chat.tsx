@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) =>
 const Chat = (): JSX.Element => {
   const classes = useStyles()
   const [isOpen, setIsOpen] = useState(false)
-  const [messages, sendMessage] = useMessenger()
+  const [messages, sendMessage, markAsRead] = useMessenger()
   const unreadMessagesNo = useUnreadMessageNo(messages)
 
   return (
@@ -31,7 +31,12 @@ const Chat = (): JSX.Element => {
         onClick={() => setIsOpen(!isOpen)}
         unreadMessagesNo={unreadMessagesNo}
       />
-      <Body isOpen={isOpen} messages={messages} sendMessage={sendMessage} />
+      <Body
+        isOpen={isOpen}
+        messages={messages}
+        sendMessage={sendMessage}
+        markAsRead={markAsRead}
+      />
     </div>
   )
 }

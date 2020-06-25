@@ -14,15 +14,16 @@ export interface Message {
   timestamp: string
 }
 export type SendMessage = (text: string) => void
+export type MarkMessageAsRead = (id: number) => void
 
-type ReturnType = [Message[], SendMessage]
+type ReturnType = [Message[], SendMessage, MarkMessageAsRead]
 
 function useMessenger(): ReturnType {
   const [messages, setMessages] = useState<Message[]>(
     initialMessages as Message[],
   )
 
-  const sendMessage = (text: string) =>
+  const sendMessage: SendMessage = (text) =>
     setMessages([
       ...messages,
       {
@@ -33,8 +34,14 @@ function useMessenger(): ReturnType {
         timestamp: String(Date.now()),
       },
     ])
+  const markAsRead: MarkMessageAsRead = (idRead) =>
+    setMessages(
+      messages.map((message) =>
+        message.id === idRead ? { ...message, status: "read" } : message,
+      ),
+    )
 
-  return [messages, sendMessage]
+  return [messages, sendMessage, markAsRead]
 }
 
 export const useUnreadMessageNo = (messages: Message[]): number =>
