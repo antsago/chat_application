@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { makeStyles, createStyles } from "@material-ui/core"
 import Body from "./Body"
 import Header from "./Header"
-import useMessenger from "./MessengerHook"
+import useMessenger, { useUnreadMessageNo } from "./MessengerHook"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -23,9 +23,7 @@ const Chat = (): JSX.Element => {
   const classes = useStyles()
   const [isOpen, setIsOpen] = useState(false)
   const [messages, sendMessage] = useMessenger()
-  const unreadMessagesNo = messages.filter(
-    (m) => m.direction === "in" && m.status === "received",
-  ).length
+  const unreadMessagesNo = useUnreadMessageNo(messages)
 
   return (
     <div className={classes.root}>

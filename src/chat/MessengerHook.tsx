@@ -1,10 +1,10 @@
-import { useState } from "react"
-import initialMessages from "./initialMessages.json"
-
 // In a production application this should be managed with
 // some kind of global state (e.g. Redux). That would reduce
 // interemdiate props but also add quite a bit of boilerplate.
 // Here we'll just use a state hook and suffer the intermediate props.
+
+import { useState, useMemo } from "react"
+import initialMessages from "./initialMessages.json"
 
 export interface Message {
   id: number
@@ -36,5 +36,13 @@ function useMessenger(): ReturnType {
 
   return [messages, sendMessage]
 }
+
+export const useUnreadMessageNo = (messages: Message[]): number =>
+  useMemo(
+    () =>
+      messages.filter((m) => m.direction === "in" && m.status === "received")
+        .length,
+    [messages],
+  )
 
 export default useMessenger
