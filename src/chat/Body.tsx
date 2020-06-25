@@ -1,5 +1,11 @@
 import React from "react"
-import { makeStyles, createStyles, Grid, Collapse } from "@material-ui/core"
+import {
+  makeStyles,
+  createStyles,
+  Grid,
+  Collapse,
+  Box,
+} from "@material-ui/core"
 import {
   Message as MessageType,
   SendMessage,
@@ -10,8 +16,10 @@ import Message from "./Message"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
-    body: {
-      padding: theme.spacing(1),
+    root: {
+      padding: theme.spacing(2),
+    },
+    messages: {
       height: "calc(100vh - 150px)",
       overflow: "scroll",
     },
@@ -35,12 +43,14 @@ const Body = ({
 
   return (
     <Collapse in={isOpen}>
-      <Grid container className={classes.body}>
-        {messages.map((m) => (
-          <Message key={m.id} message={m} onRead={markAsRead} />
-        ))}
-      </Grid>
-      <Input sendMessage={sendMessage} />
+      <Box className={classes.root}>
+        <Grid container className={classes.messages} spacing={2}>
+          {messages.map((m) => (
+            <Message key={m.id} message={m} onRead={markAsRead} />
+          ))}
+        </Grid>
+        <Input sendMessage={sendMessage} />
+      </Box>
     </Collapse>
   )
 }

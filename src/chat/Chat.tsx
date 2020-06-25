@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) =>
       border: "solid 1px grey",
       borderRadius: "3px",
       zIndex: theme.zIndex.speedDial,
-      backgroundColor: theme.palette.grey[200],
+      backgroundColor: theme.palette.common.white,
     },
   }),
 )
