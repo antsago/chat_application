@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { makeStyles, createStyles } from "@material-ui/core"
 import Body from "./Body"
 import Header from "./Header"
-import { useUnreadMessageNo, useMessenger } from "./components"
+import { useUnreadMessageNo, useMessenger } from "./utils"
 
 const useStyles = makeStyles((theme) =>
   createStyles({

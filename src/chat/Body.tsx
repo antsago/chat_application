@@ -1,12 +1,7 @@
 import React from "react"
 import { makeStyles, createStyles, Collapse, Box } from "@material-ui/core"
-import {
-  Message as MessageType,
-  SendMessage,
-  MarkMessageAsRead,
-  Input,
-  History,
-} from "./components"
+import { Message as MessageType, SendMessage, MarkMessageAsRead } from "./utils"
+import { Input, History } from "./components"
 
 const useStyles = makeStyles((theme) =>
   createStyles({

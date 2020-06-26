@@ -7,7 +7,7 @@ import {
   Message as MessageType,
   MarkMessageAsRead,
   useGoToUnreadMessage,
-} from "./utils"
+} from "../utils"
 import Message from "./Message"
 import GoToButton from "./GoToButton"
 
