@@ -1,9 +1,13 @@
 // Ideally the message history should be virtualized, I tried with react-window, but couldn't get
 // it to work within a reasonable timeframe :(
 
-import React, { useRef, RefObject } from "react"
+import React from "react"
 import { makeStyles, createStyles, Grid } from "@material-ui/core"
-import { Message as MessageType, MarkMessageAsRead } from "./MessengerHooks"
+import {
+  Message as MessageType,
+  MarkMessageAsRead,
+  useGoToUnreadMessage,
+} from "./MessengerHooks"
 import Message from "./Message"
 
 const useStyles = makeStyles(() =>
@@ -18,24 +22,6 @@ const useStyles = makeStyles(() =>
 interface Props {
   messages: MessageType[]
   markAsRead: MarkMessageAsRead
-}
-
-const useGoToUnreadMessage = (
-  messages: MessageType[],
-): [number, RefObject<HTMLDivElement>, () => void] => {
-  const unreadMessage = messages.find(
-    (m) => m.direction === "in" && m.status === "received",
-  )
-
-  const messageRef = useRef<HTMLDivElement>()
-  const goToMessage = () => {
-    messageRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    })
-  }
-
-  return [unreadMessage.id, messageRef, goToMessage]
 }
 
 const History = ({ messages, markAsRead }: Props): JSX.Element => {

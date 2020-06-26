@@ -3,7 +3,7 @@
 // interemdiate props but also add quite a bit of boilerplate.
 // Here we'll just use a state hook and suffer the intermediate props.
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, RefObject, useRef } from "react"
 import initialMessages from "./initialMessages.json"
 
 export interface Message {
@@ -51,5 +51,22 @@ export const useUnreadMessageNo = (messages: Message[]): number =>
         .length,
     [messages],
   )
+
+type GoToMessageReturn = [number, RefObject<HTMLDivElement>, () => void]
+
+export const useGoToUnreadMessage = (
+  messages: Message[],
+): GoToMessageReturn => {
+  const unreadMessage = messages.find(
+    (m) => m.direction === "in" && m.status === "received",
+  )
+
+  const messageRef = useRef<HTMLDivElement>()
+  const goToMessage = () => {
+    messageRef.current.scrollIntoView(false)
+  }
+
+  return [unreadMessage.id, messageRef, goToMessage]
+}
 
 export default useMessenger
