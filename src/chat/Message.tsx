@@ -7,7 +7,7 @@ import {
   makeStyles,
   createStyles,
 } from "@material-ui/core"
-import { Message as MessageType } from "./MessengerHook"
+import { Message as MessageType } from "./MessengerHooks"
 import MetaInfo from "./MetaInfo"
 
 interface Props {

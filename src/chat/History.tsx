@@ -1,6 +1,6 @@
 import React from "react"
 import { makeStyles, createStyles, Grid } from "@material-ui/core"
-import { Message as MessageType, MarkMessageAsRead } from "./MessengerHook"
+import { Message as MessageType, MarkMessageAsRead } from "./MessengerHooks"
 import Message from "./Message"
 
 const useStyles = makeStyles(() =>

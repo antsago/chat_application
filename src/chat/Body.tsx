@@ -4,7 +4,7 @@ import {
   Message as MessageType,
   SendMessage,
   MarkMessageAsRead,
-} from "./MessengerHook"
+} from "./MessengerHooks"
 import Input from "./Input"
 import History from "./History"
 

@@ -3,7 +3,7 @@ import { format } from "date-fns"
 import DoneIcon from "@material-ui/icons/Done"
 import DoneAllIcon from "@material-ui/icons/DoneAll"
 import { Typography, makeStyles, createStyles } from "@material-ui/core"
-import { Message as MessageType } from "./MessengerHook"
+import { Message as MessageType } from "./MessengerHooks"
 
 interface Props {
   message: MessageType
