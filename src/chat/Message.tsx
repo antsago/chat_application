@@ -45,6 +45,7 @@ const Message = ({ message, onRead, reference }: Props): JSX.Element => {
 
   return (
     <VisibilitySensor
+      offset={{ bottom: 75 }}
       onChange={(isVisible) => {
         if (
           isVisible &&
