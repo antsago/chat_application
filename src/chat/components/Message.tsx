@@ -1,4 +1,4 @@
-import React, { RefObject } from "react"
+import React, { forwardRef } from "react"
 import VisibilitySensor from "react-visibility-sensor"
 import {
   Grid,
@@ -13,7 +13,6 @@ import MetaInfo from "./MetaInfo"
 interface Props {
   message: MessageType
   onRead: (messageId: number) => void
-  ref?: RefObject<HTMLDivElement>
 }
 
 const useStyles = makeStyles((theme) =>
@@ -40,30 +39,32 @@ const useStyles = makeStyles((theme) =>
   }),
 )
 
-const Message = ({ message, onRead, ref }: Props): JSX.Element => {
-  const classes = useStyles(message)
+const Message = forwardRef<HTMLDivElement, Props>(
+  ({ message, onRead }: Props, ref): JSX.Element => {
+    const classes = useStyles(message)
 
-  return (
-    <VisibilitySensor
-      offset={{ bottom: 75 }}
-      onChange={(isVisible) => {
-        if (
-          isVisible &&
-          message.direction === "in" &&
-          message.status === "received"
-        ) {
-          onRead(message.id)
-        }
-      }}
-    >
-      <Grid item className={classes.row} ref={ref}>
-        <Card className={classes.message} elevation={5}>
-          <Typography>{message.text}</Typography>
-          <MetaInfo message={message} />
-        </Card>
-      </Grid>
-    </VisibilitySensor>
-  )
-}
+    return (
+      <VisibilitySensor
+        offset={{ bottom: 75 }}
+        onChange={(isVisible) => {
+          if (
+            isVisible &&
+            message.direction === "in" &&
+            message.status === "received"
+          ) {
+            onRead(message.id)
+          }
+        }}
+      >
+        <Grid item className={classes.row} ref={ref}>
+          <Card className={classes.message} elevation={5}>
+            <Typography>{message.text}</Typography>
+            <MetaInfo message={message} />
+          </Card>
+        </Grid>
+      </VisibilitySensor>
+    )
+  },
+)
 
 export default Message
