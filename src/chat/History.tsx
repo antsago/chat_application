@@ -9,6 +9,7 @@ import {
   useGoToUnreadMessage,
 } from "./MessengerHooks"
 import Message from "./Message"
+import GoToButton from "./GoToButton"
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -32,7 +33,7 @@ const History = ({ messages, markAsRead }: Props): JSX.Element => {
 
   return (
     <Grid container className={classes.root} spacing={2}>
-      <button onClick={goToMessage} type="button">Hi!</button>
+      <GoToButton onClick={goToMessage} />
       {messages.map((m) => (
         <Message
           key={m.id}

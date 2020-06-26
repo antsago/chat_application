@@ -15,6 +15,7 @@ export interface Message {
 }
 export type SendMessage = (text: string) => void
 export type MarkMessageAsRead = (id: number) => void
+export type GoToMessage = () => void
 
 type ReturnType = [Message[], SendMessage, MarkMessageAsRead]
 
@@ -52,7 +53,7 @@ export const useUnreadMessageNo = (messages: Message[]): number =>
     [messages],
   )
 
-type GoToMessageReturn = [number, RefObject<HTMLDivElement>, () => void]
+type GoToMessageReturn = [number, RefObject<HTMLDivElement>, GoToMessage]
 
 export const useGoToUnreadMessage = (
   messages: Message[],
