@@ -24,6 +24,7 @@ export default function useMessenger(): ReturnType {
         timestamp: String(Date.now()),
       },
     ])
+
   const markAsRead: MarkMessageAsRead = (idRead) =>
     setMessages(
       messages.map((message) =>
