@@ -13,7 +13,7 @@ import MetaInfo from "./MetaInfo"
 interface Props {
   message: MessageType
   onRead: (messageId: number) => void
-  reference?: RefObject<HTMLDivElement>
+  ref?: RefObject<HTMLDivElement>
 }
 
 const useStyles = makeStyles((theme) =>
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) =>
   }),
 )
 
-const Message = ({ message, onRead, reference }: Props): JSX.Element => {
+const Message = ({ message, onRead, ref }: Props): JSX.Element => {
   const classes = useStyles(message)
 
   return (
@@ -56,7 +56,7 @@ const Message = ({ message, onRead, reference }: Props): JSX.Element => {
         }
       }}
     >
-      <Grid item className={classes.row} ref={reference}>
+      <Grid item className={classes.row} ref={ref}>
         <Card className={classes.message} elevation={5}>
           <Typography>{message.text}</Typography>
           <MetaInfo message={message} />

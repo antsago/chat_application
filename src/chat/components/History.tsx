@@ -39,7 +39,7 @@ const History = ({ messages, markAsRead }: Props): JSX.Element => {
           key={m.id}
           message={m}
           onRead={markAsRead}
-          reference={
+          ref={
             unreadMessage && m.id === unreadMessage.id ? messageRef : undefined
           }
         />
