@@ -19,7 +19,7 @@ export type GoToMessage = () => void
 
 type ReturnType = [Message[], SendMessage, MarkMessageAsRead]
 
-function useMessenger(): ReturnType {
+export function useMessenger(): ReturnType {
   const [messages, setMessages] = useState<Message[]>(
     initialMessages as Message[],
   )
@@ -68,5 +68,3 @@ export const useGoToUnreadMessage = (
 
   return [unreadMessage, messageRef, goToMessage]
 }
-
-export default useMessenger

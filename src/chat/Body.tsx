@@ -4,9 +4,9 @@ import {
   Message as MessageType,
   SendMessage,
   MarkMessageAsRead,
-} from "./MessengerHooks"
-import Input from "./Input"
-import History from "./History"
+  Input,
+  History,
+} from "./components"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
