@@ -34,7 +34,9 @@ const ChatHeader = ({ unreadMessagesNo, onClick }: Props): JSX.Element => {
       role="button"
       tabIndex={0}
     >
-      <Typography className={classes.title} component="h2">Chat</Typography>
+      <Typography className={classes.title} component="h2">
+        Chat
+      </Typography>
 
       <Badge badgeContent={unreadMessagesNo} color="secondary">
         <ChatIcon fontSize="small" />
