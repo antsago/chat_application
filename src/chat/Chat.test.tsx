@@ -32,6 +32,16 @@ describe("Chat", () => {
     )
   })
 
+  test("Cannot send empty message", async () => {
+    const { getByLabelText, getByText } = render(<Chat />)
+    userEvent.click(getByText("Chat"))
+
+    expect(getByLabelText("Send the message")).toBeDisabled()
+
+    await userEvent.type(getByLabelText("Send message"), " ")
+    expect(getByLabelText("Send the message")).toBeDisabled()
+  })
+
   test("Sends message", async () => {
     const { queryByLabelText, getByText } = render(<Chat />)
     userEvent.click(getByText("Chat"))
