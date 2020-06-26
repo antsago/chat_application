@@ -1,7 +1,7 @@
 import React from "react"
 import { makeStyles, createStyles, IconButton } from "@material-ui/core"
 import ArrowIcon from "@material-ui/icons/DoubleArrowRounded"
-import { GoToMessage } from "./MessengerHooks"
+import { GoToMessage } from "./utils"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
