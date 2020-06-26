@@ -7,14 +7,17 @@ import useMessenger, { useUnreadMessageNo } from "./MessengerHooks"
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
-      width: "400px",
-      position: "fixed",
-      right: 10,
-      bottom: 10,
       border: "solid 1px grey",
       borderRadius: "3px",
       zIndex: theme.zIndex.speedDial,
       backgroundColor: theme.palette.common.white,
+      position: "fixed",
+      bottom: 0,
+      width: "100%",
+      [theme.breakpoints.up("md")]: {
+        right: 0,
+        width: "400px",
+      },
     },
   }),
 )

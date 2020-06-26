@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) =>
       flexDirection: "column",
       alignItems: "center",
       backgroundColor: theme.palette.background.default,
+      textAlign: "center",
     },
   }),
 )
