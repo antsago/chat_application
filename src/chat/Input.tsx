@@ -55,6 +55,7 @@ const Input = ({ sendMessage }: Props): JSX.Element => {
                 edge="end"
                 type="submit"
                 color="secondary"
+                disabled={!message || !message.trim()}
               >
                 <SendIcon />
               </IconButton>
