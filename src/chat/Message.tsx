@@ -1,4 +1,4 @@
-import React from "react"
+import React, { RefObject } from "react"
 import VisibilitySensor from "react-visibility-sensor"
 import {
   Grid,
@@ -13,6 +13,7 @@ import MetaInfo from "./MetaInfo"
 interface Props {
   message: MessageType
   onRead: (messageId: number) => void
+  reference?: RefObject<HTMLDivElement>
 }
 
 const useStyles = makeStyles((theme) =>
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) =>
   }),
 )
 
-const Message = ({ message, onRead }: Props): JSX.Element => {
+const Message = ({ message, onRead, reference }: Props): JSX.Element => {
   const classes = useStyles(message)
 
   return (
@@ -54,7 +55,7 @@ const Message = ({ message, onRead }: Props): JSX.Element => {
         }
       }}
     >
-      <Grid item className={classes.row}>
+      <Grid item className={classes.row} ref={reference}>
         <Card className={classes.message} elevation={5}>
           <Typography>{message.text}</Typography>
           <MetaInfo message={message} />
