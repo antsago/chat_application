@@ -1,28 +1,18 @@
 import React from "react"
-import {
-  makeStyles,
-  createStyles,
-  Grid,
-  Collapse,
-  Box,
-} from "@material-ui/core"
+import { makeStyles, createStyles, Collapse, Box } from "@material-ui/core"
 import {
   Message as MessageType,
   SendMessage,
   MarkMessageAsRead,
 } from "./MessengerHook"
 import Input from "./Input"
-import Message from "./Message"
+import History from "./History"
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       padding: theme.spacing(2),
       paddingTop: theme.spacing(1),
-    },
-    messages: {
-      height: "calc(100vh - 175px)",
-      overflow: "scroll",
     },
   }),
 )
@@ -45,11 +35,7 @@ const Body = ({
   return (
     <Collapse in={isOpen}>
       <Box className={classes.root}>
-        <Grid container className={classes.messages} spacing={2}>
-          {messages.map((m) => (
-            <Message key={m.id} message={m} onRead={markAsRead} />
-          ))}
-        </Grid>
+        <History messages={messages} markAsRead={markAsRead} />
         <Input sendMessage={sendMessage} />
       </Box>
     </Collapse>
