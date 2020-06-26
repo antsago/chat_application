@@ -53,21 +53,20 @@ export const useUnreadMessageNo = (messages: Message[]): number =>
     [messages],
   )
 
-type GoToMessageReturn = [number, RefObject<HTMLDivElement>, GoToMessage]
+type GoToMessageReturn = [Message, RefObject<HTMLDivElement>, GoToMessage]
 
 export const useGoToUnreadMessage = (
   messages: Message[],
 ): GoToMessageReturn => {
-  const unreadMessage = messages.find(
-    (m) => m.direction === "in" && m.status === "received",
-  )
-
   const messageRef = useRef<HTMLDivElement>()
   const goToMessage = () => {
     messageRef.current.scrollIntoView(false)
   }
+  const unreadMessage = messages.find(
+    (m) => m.direction === "in" && m.status === "received",
+  )
 
-  return [unreadMessage.id, messageRef, goToMessage]
+  return [unreadMessage, messageRef, goToMessage]
 }
 
 export default useMessenger

@@ -27,19 +27,21 @@ interface Props {
 
 const History = ({ messages, markAsRead }: Props): JSX.Element => {
   const classes = useStyles()
-  const [unreadMessageId, messageRef, goToMessage] = useGoToUnreadMessage(
+  const [unreadMessage, messageRef, goToMessage] = useGoToUnreadMessage(
     messages,
   )
 
   return (
     <Grid container className={classes.root} spacing={2}>
-      <GoToButton onClick={goToMessage} />
+      {unreadMessage && <GoToButton onClick={goToMessage} />}
       {messages.map((m) => (
         <Message
           key={m.id}
           message={m}
           onRead={markAsRead}
-          reference={m.id === unreadMessageId ? messageRef : undefined}
+          reference={
+            unreadMessage && m.id === unreadMessage.id ? messageRef : undefined
+          }
         />
       ))}
     </Grid>
